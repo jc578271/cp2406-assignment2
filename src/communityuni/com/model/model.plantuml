@@ -1,0 +1,202 @@
+@startuml
+
+title __MODEL's Class Diagram__\n
+
+  namespace communityuni.com {
+    namespace model {
+      class communityuni.com.model.Bus {
+          + Bus()
+          + bio()
+          + draw()
+      }
+    }
+  }
+  
+
+  namespace communityuni.com {
+    namespace model {
+      class communityuni.com.model.Car {
+          + Car()
+          + bio()
+          + draw()
+      }
+    }
+  }
+  
+
+  namespace communityuni.com {
+    namespace model {
+      class communityuni.com.model.Map {
+          {static} + cars : ArrayList<Vehicle>
+          {static} + lights : ArrayList<TrafficLight>
+          {static} + roads : ArrayList<Road>
+          + Map()
+      }
+    }
+  }
+  
+
+  namespace communityuni.com {
+    namespace model {
+      class communityuni.com.model.Motorbike {
+          + Motorbike()
+          + bio()
+          + draw()
+      }
+    }
+  }
+  
+
+  namespace communityuni.com {
+    namespace model {
+      class communityuni.com.model.Road {
+          - carsOnLane0 : ArrayList<Vehicle>
+          - carsOnLane1 : ArrayList<Vehicle>
+          - carsOnLanes : ArrayList<Vehicle>[]
+          - carsOnRoad : ArrayList<Vehicle>
+          - connectedRoads : ArrayList<Road>
+          - directIndex : int
+          - directSign : int
+          - direction : String
+          - endLocation : double[]
+          - id : String
+          - isSelected : boolean
+          - length : double
+          - lightsOnRoad : ArrayList<TrafficLight>
+          - oppositeDirectIndex : int
+          - speedLimit : int
+          - startLocation : double[]
+          + Road()
+          + Road()
+          + addCarsOnRoad()
+          + bio()
+          + draw()
+          + getCarsOnLane0()
+          + getCarsOnLane1()
+          + getCarsOnLanes()
+          + getCarsOnRoad()
+          + getConnectedRoads()
+          + getDirectIndex()
+          + getDirectSign()
+          + getDirection()
+          + getEndLocation()
+          + getId()
+          + getLength()
+          + getLightsOnRoad()
+          + getOppositeDirectIndex()
+          + getSpeedLimit()
+          + getStartLocation()
+          + isSelected()
+          + paintComponent()
+          + removeCarsOnRoad()
+          + setCarsOnLane0()
+          + setCarsOnLane1()
+          + setCarsOnLanes()
+          + setCarsOnRoad()
+          + setConnectedRoads()
+          + setDirectIndex()
+          + setDirectSign()
+          + setDirection()
+          + setId()
+          + setLength()
+          + setLightsOnRoad()
+          + setOppositeDirectIndex()
+          + setSelected()
+          + setSpeedLimit()
+          + setStartLocation()
+      }
+    }
+  }
+  
+
+  namespace communityuni.com {
+    namespace model {
+      class communityuni.com.model.TrafficLight {
+          - id : String
+          - position : double[]
+          - state : String
+          + TrafficLight()
+          + TrafficLight()
+          + bio()
+          + draw()
+          + getId()
+          + getPosition()
+          + getRoadAttachedTo()
+          + getState()
+          + operate()
+          + setId()
+          + setPosition()
+          + setRoadAttachedTo()
+          + setState()
+      }
+    }
+  }
+  
+
+  namespace communityuni.com {
+    namespace model {
+      abstract class communityuni.com.model.Vehicle {
+          # id : String
+          # length : double
+          # position : double[]
+          # signSpeed : int
+          - breadth : double
+          - directionIndex : int
+          - finished : boolean
+          - laneIndex : int
+          - oppositeDirectIndex : int
+          - order : int
+          - randNextRoad : int
+          - speed : int
+          + Vehicle()
+          + Vehicle()
+          {abstract} + bio()
+          {abstract} + draw()
+          + getBreadth()
+          + getCurrentRoad()
+          + getDirectionIndex()
+          + getId()
+          + getInitialPosition()
+          + getLaneIndex()
+          + getLength()
+          + getOppositeDirectIndex()
+          + getPeriod()
+          + getPosition()
+          + getSignSpeed()
+          + getSpeed()
+          + isFinished()
+          + move()
+          + setBreadth()
+          + setCurrentRoad()
+          + setDirectionIndex()
+          + setFinished()
+          + setId()
+          + setLaneIndex()
+          + setLength()
+          + setOppositeDirectIndex()
+          + setPosition()
+          + setSignSpeed()
+          + setSpeed()
+          - carCollision()
+          - roundAvoid()
+      }
+    }
+  }
+  
+
+  communityuni.com.model.Bus -up-|> communityuni.com.model.Vehicle
+  communityuni.com.model.Car -up-|> communityuni.com.model.Vehicle
+  communityuni.com.model.Motorbike -up-|> communityuni.com.model.Vehicle
+  communityuni.com.model.Road -up-|> javax.swing.JPanel
+  communityuni.com.model.TrafficLight o-- communityuni.com.model.Road : roadAttachedTo
+  communityuni.com.model.Vehicle o-- communityuni.com.model.Road : currentRoad
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
